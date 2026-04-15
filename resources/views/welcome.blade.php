@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>НАРУШЕНИЙ.НЕТ - Авторизация</title>
-    @Vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- @Vite(['resources/css/app.css', 'resources/js/app.js']) -->
 </head>
 <body>
 

@@ -14,6 +14,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* ===== LOGIN/REGISTER STYLES ===== */
 .container {
     background: white;
     padding: 60px 80px;
@@ -88,4 +89,183 @@ button:hover {
 
 .register-link a:hover {
     text-decoration: underline;
+}
+
+/* ===== REPORTS INDEX STYLES ===== */
+body.reports-page {
+    display: block;
+    background: #e6edff;
+}
+
+.main-header {
+    background: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.header-logo {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-name {
+    color: #333;
+    font-size: 14px;
+}
+
+.btn-logout {
+    padding: 8px 24px;
+    background: transparent;
+    border: 2px solid #0033ff;
+    color: #0033ff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-logout:hover {
+    background: #0033ff;
+    color: white;
+}
+
+.reports-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.btn-create {
+    display: block;
+    margin: 0 auto 40px;
+    padding: 14px 40px;
+    background: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-create:hover {
+    background: #cc0000;
+}
+
+.reports-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.report-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.card-date {
+    color: #ff0000;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+    padding: 0;
+}
+
+.btn-icon:hover {
+    opacity: 1;
+}
+
+.btn-delete:hover {
+    color: #ff0000;
+}
+
+.card-number {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.card-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.card-status {
+    font-size: 14px;
+    color: #333;
+}
+
+.card-status strong {
+    font-weight: 700;
+}
+
+.status-new strong {
+    color: #333;
+}
+
+.status-rejected strong {
+    color: #ff0000;
+}
+
+.status-confirmed strong {
+    color: #0033ff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .reports-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .reports-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .main-header {
+        padding: 15px 20px;
+    }
+    
+    .header-logo {
+        font-size: 28px;
+    }
 }
