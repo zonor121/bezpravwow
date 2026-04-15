@@ -9,10 +9,13 @@
     <h1>Список заявок</h1>
         <a href="{{url('reports/create')}}"><button>Создать заявку</button></a>
         @foreach ($reports as $report)
-            <li>
-                <strong>Гос номер:</strong> {{ $report->number }}<br>
-                <strong>Описание:</strong> {{ $report->description }}<br>
-            </li>
+           <div class="card">
+            <h2>{{ $report -> number }}</h2>
+            <p>{{ $report -> description }}</p>
+            <p>{{ $report -> created_at }}</p>
+            <p>{{ $report -> status -> name }}</p>
+           </div>
+        
 
             <div>
             <form method="POST" action="{{route('reports.delete', $report->id)}}">
