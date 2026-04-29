@@ -13,7 +13,7 @@
             <h2>{{ $report -> number }}</h2>
             <p>{{ $report -> description }}</p>
             <p>{{ $report -> created_at }}</p>
-            <p>{{ $report -> status -> name }}</p>
+            <p>{{ $report->status->name ?? 'Статус не задан' }}</p>
            </div>
         
 
