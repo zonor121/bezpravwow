@@ -1,9 +1,17 @@
+@import "tailwindcss";
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/*
 body {
     min-height: 100vh;
     display: flex;
@@ -14,7 +22,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* ===== LOGIN/REGISTER STYLES ===== */
+
 .container {
     background: white;
     padding: 60px 80px;
@@ -91,7 +99,7 @@ button:hover {
     text-decoration: underline;
 }
 
-/* ===== REPORTS INDEX STYLES ===== */
+
 body.reports-page {
     display: block;
     background: #e6edff;
@@ -249,7 +257,7 @@ body.reports-page {
     color: #0033ff;
 }
 
-/* Responsive */
+
 @media (max-width: 900px) {
     .reports-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -268,4 +276,5 @@ body.reports-page {
     .header-logo {
         font-size: 28px;
     }
-}
+} */
+

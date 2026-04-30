@@ -10,8 +10,8 @@ class Status extends Model
 {
     use HasFactory;
 
-    public function status(): HasMany
+    public function reports(): HasMany
     {
-        return $this -> hasMany(Status::class);
+        return $this -> hasMany(Report::class);
     }
 }
