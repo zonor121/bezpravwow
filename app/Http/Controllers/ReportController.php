@@ -46,8 +46,7 @@ class ReportController extends Controller
             return redirect()->back();
         } else {
             abort(403, "У вас нет прав доступа");
-        }
-       
+        } 
     
     }
 
@@ -88,4 +87,22 @@ class ReportController extends Controller
             abort(403, "У вас нет прав доступа");
         }
         }
+
+        public function statusUpdate(Request $request, Report $report)
+        {
+
+            if($report->status->id !== 1){
+                return redirect()->back()->with('error', 'Нельзя изменить статус обработанной заявки');
+
+            }
+
+            $request->validate([
+                'status_id' => 'required|exists:statuses,id',
+            ]);
+            
+            $report->update($request->only(['status_id']));
+            
+            return redirect()->back();
+        }
+
 }

@@ -24,7 +24,7 @@
     
 
     <div class="register-link">
-        <a href="#">Зарегистрироваться</a>
+        <a href="/register">Зарегистрироваться</a>
     </div>
 </div>
 
