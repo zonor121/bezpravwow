@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Report;
 use App\Models\Status;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -24,10 +25,12 @@ class ReportController extends Controller
             );
         if($validate){
             $reports = Report::where('status_id', $status)
+                    ->where('user_id', Auth::user()->id)
                     ->orderBy('created_at', $sort)
                     ->paginate(8);
         } else {
-            $reports = Report::orderBy('created_at', $sort)
+            $reports = Report::where('user_id', Auth::user()->id)
+                    ->orderBy('created_at', $sort)
                     ->paginate(8);
         }
 
@@ -37,8 +40,14 @@ class ReportController extends Controller
     }
 
     public function destroy(Report $report){
-        $report -> delete();
-        return redirect()->back();
+
+        if(Auth::user()->id === $report->user_id){
+            $report -> delete();
+            return redirect()->back();
+        } else {
+            abort(403, "У вас нет прав доступа");
+        }
+       
     
     }
 
@@ -49,22 +58,34 @@ class ReportController extends Controller
         'description' => 'string|required',
     ]);
 
+    $data['user_id'] = Auth::user()->id;
+    $data['status_id'] = 1;
+
     $report -> create($data);
     return redirect() -> back();
     }
 
     public function edit(Report $report){
-        return view('reports.edit', compact('report'));
+        if(Auth::user()->id === $report->user_id){
+            return view('reports.edit', compact('report'));
+        } else {
+            abort(403, "У вас нет прав доступа");
+        }
+        
     }
 
     public function update(Report $report, Request $request){
-    
-        $data = $request -> validate([
-            'number' => 'string|required',
-            'description' => 'string|required',
-        ]);
-    
-        $report -> update($data);
-        return redirect() -> back();
+        
+        if(Auth::user()->id === $report->user_id){
+            $data = $request -> validate([
+                'number' => 'string|required',
+                'description' => 'string|required',
+            ]);
+        
+            $report -> update($data);
+            return redirect() -> back();
+        } else {
+            abort(403, "У вас нет прав доступа");
+        }
         }
 }

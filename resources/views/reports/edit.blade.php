@@ -7,6 +7,7 @@
     <title>Редактирование {{$report->title}}</title>
 </head>
 <body>
+<x-app-layout>
     <div class="container">
 <form action="{{ route('reports.update', $report->id) }}" method="POST">
             @csrf
@@ -21,5 +22,6 @@
             <input type="submit" value="Сохранить изменения">
         </form>
     </div>
+</x-app-layout>
 </body>
 </html>

@@ -14,48 +14,20 @@ use App\Http\Controllers\ReportController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/', function () {return view('welcome');});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/reports/create', function (){return view('reports.index');}) -> name('reports.index');
+    Route::get('/reports/create', function () {return view('reports.create');})->name('reports.create');
+    Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+    Route::delete('/reports/{report}', [ReportController::class,'destroy']) -> name('reports.delete');
+    Route::post('/reports', [ReportController::class, 'store']) ->name('reports.store');
+    Route::get('/reports/{report}/edit', [ReportController::class, 'edit']) ->name('reports.edit');
+    Route::put('/reports/{report}', [ReportController::class, 'update']) ->name('reports.update');
 });
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/reports/create', function (){
-    return view('reports.index');
-}) -> name('reports.index');
-
-Route::get('/reports/create', function () {
-    return view('reports.create');
-})->name('reports.create');
-
-
-Route::get('/reports', [ReportController::class, 'index'])
-    ->name('reports.index');
-
-
-Route::delete('/reports/{report}', [ReportController::class,'destroy']) 
--> name('reports.delete');
-
-Route::post('/reports', [ReportController::class, 'store']) 
-->name('reports.store');
-
-Route::get('/reports/{report}/edit', [ReportController::class, 'edit']) 
-->name('reports.edit');
-
-Route::put('/reports/{report}', [ReportController::class, 'update']) 
-->name('reports.update');
 
 require __DIR__.'/auth.php';

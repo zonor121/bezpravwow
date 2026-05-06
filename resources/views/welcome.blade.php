@@ -13,6 +13,8 @@
     </div>
     
     <h2>Авторизация</h2>
+
+   
     
     <form action="#" method="post" style="margin-left: 50px">
         <input type="text" name="login" placeholder="логин" required>
@@ -20,6 +22,7 @@
         <button type="submit">ВОЙТИ</button>
     </form>
     
+
     <div class="register-link">
         <a href="#">Зарегистрироваться</a>
     </div>
