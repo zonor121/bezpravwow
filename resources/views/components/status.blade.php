@@ -10,7 +10,7 @@ $classes = match ($type) {
 
 <div>
     <p>
-        Статус заказа:
+        Статус заявления:
         <span {{ $attributes->merge(['class'=> $classes])}}> {{ $slot }}</span>
     </p>
 </div>
