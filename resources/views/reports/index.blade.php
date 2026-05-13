@@ -7,23 +7,8 @@
     @Vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    <h1>Список заявок</h1>
     <x-app-layout>
-        <div>
-            <span> Сортировка по дате создания: </span>
-            <a href="{{ route('reports.index', ['sort' => 'desc', 'status' => $status]) }}">Сначало новые</a>
-            <a href="{{ route('reports.index', ['sort' => 'asc', 'status' => $status]) }}">Сначало старые</a>
-        </div>
-        <div>
-            <p>Фильтрация по статусу заявки</p>
-            <ul>
-                @foreach ($statuses as $status)
-                    <li>
-                        <a href="{{ route('reports.index', ['sort' => $sort, 'status' => $status -> id ]) }}">{{ $status->name }}</a>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
+        <x-filter :sort=$sort :status=$status></x-filter>
         <a href="{{url('reports/create')}}"><button>Создать заявку</button></a>
         @foreach ($reports as $report)
            <div class="card">
@@ -31,6 +16,9 @@
             <p>Описание: {{ $report -> description }}</p>
             <p>Создан: {{ $report -> created_at }}</p>
             <p><strong>Статус: {{ $report->status->name }} </strong></p>
+            <x-status :type="$report->status->id">
+              {{ $report->status->name }}
+            </x-status>
            </div>
         
 

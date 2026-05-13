@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>НАРУШЕНИЙ.НЕТ - Авторизация</title>
-    <!-- @Vite(['resources/css/app.css', 'resources/js/app.js']) -->
+    @Vite(['resources/css/app.css', 'resources/js/app.js']) 
 </head>
-<body>
 
+<body>
+<x-guest-layout>
 <div class="container">
     <div class="logo">
         <span class="logo-blue">НАРУШЕНИЙ</span><span class="logo-red">.НЕТ</span>
@@ -27,6 +28,6 @@
         <a href="/register">Зарегистрироваться</a>
     </div>
 </div>
-
+</x-guest-layout>
 </body>
 </html>

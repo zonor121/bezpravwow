@@ -17,6 +17,8 @@ use App\Http\Middleware\Admin;
 |
 */
 Route::get('/', function () {return view('welcome');});
+Route::get('/index', function(){return view('index');});
+Route::get('/second', function(){return view('second');});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
